@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Type;
 use App\Http\Controllers\Controller;
-
+use App\Models\Technology;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
-class TypeController extends Controller
+
+
+class TechnologyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +19,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $types = Type::all();
-        return view("admin.types.index", compact("types"));
+        $technologies = Technology::all();
+        return view("admin.technologies.index", compact("technologies"));
     }
 
     /**
@@ -27,8 +30,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        return view("admin.types.create");
-        
+        return view("admin.technologies.create");
     }
 
     /**
@@ -40,14 +42,12 @@ class TypeController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            "name" => ["required", "unique:types"]
+            "name" => ["required", "unique:technologies"]
         ]);
-        $data["slug"] = Type::generateSlug($data["name"]);
-        $type = new Type();
-        $type->fill($data);
-        $type->save();
-
-        return redirect()->route("admin.types.index");
+        $data["slug"] = Str::slug($data["name"], "-");
+        // dd($data);
+        $technology = Technology::create($data);
+        return redirect()->route("admin.technologies.index")->with("message", "$technology->name successfully created");
     }
 
     /**
@@ -58,7 +58,7 @@ class TypeController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -67,9 +67,9 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Type $type)
+    public function edit(Technology $technology)
     {
-        return view("admin.types.edit", compact("type"));
+        return view("admin.technologies.edit", compact("technology"));
     }
 
     /**
@@ -79,13 +79,14 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Type $type)
+    public function update(Request $request, Technology $technology)
     {
-        $data = $request->all();
-        $data["slug"] = Type::generateSlug($data["name"]);
-        $type->update($data);
-
-        return redirect()->route("admin.types.index")->with("message", "$type->name has been successfully edited");
+        $data = $request->validate([
+            "name" => ["required", Rule::unique("technologies")->ignore($technology)]
+        ]);
+        $data["slug"] = Str::slug($data["name"]);
+        $technology->update($data);
+        return redirect()->route("admin.technologies.index")->with("message", "$technology->name successfully updated");
     }
 
     /**
@@ -94,9 +95,9 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Type $type)
+    public function destroy(Technology $technology)
     {
-        $type->delete();
-         return redirect()->route("admin.types.index")->with("message", "$type->name has been successfully deleted");
+        $technology->delete();
+        return redirect()->route("admin.technologies.index")->with("message","$technology->name successefully deleted");
     }
 }
