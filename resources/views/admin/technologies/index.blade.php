@@ -16,7 +16,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Technology:</th>
-                            <th scope="col">Created at:</th>
+                            <th scope="col">Projects Nr.</th>
                             <th scope="col">Actions: </th>
                         </tr>
                     </thead>
@@ -25,8 +25,7 @@
                             <tr class="position-relative" >
                                 
                                 <th scope="row">{{ $technology->name }}</th>
-                                
-                                <td>{{ $technology->created_at }}</td>
+                                 <td>{{ count($technology->projects) }}</td>
                                
                                 <td  class="">
                                     

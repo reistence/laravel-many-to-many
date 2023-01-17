@@ -16,7 +16,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Type:</th>
-                            <th scope="col">Created at:</th>
+                            <th scope="col">Projects Nr.</th>
                             <th scope="col">Actions: </th>
                         </tr>
                     </thead>
@@ -25,9 +25,7 @@
                             <tr class="position-relative" >
                                 
                                 <th scope="row">{{ $type->name }}</th>
-                                
-                                <td>{{ $type->created_at }}</td>
-                               
+                                 <td>{{ count($type->projects) }}</td>                    
                                 <td  class="">
                                     
                                     <a class="btn btn-dark" href="{{ route('admin.types.edit', $type->slug) }}">
