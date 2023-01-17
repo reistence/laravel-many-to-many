@@ -5,13 +5,13 @@
           <div class="text-start mb-4">
                  <a href="{{ route('admin.projects.index') }}" class="btn btn-danger"><i class="fa-solid fa-angles-left"></i></a>
              </div>
-        <h4 class="text-center text-white mt-3">
-            {{ $project->type ? $project->type->name : 'No Type' }}
-            {{-- {{ $project->type?->name }} --}}
-        </h4>
-        <h1 class="text-center mt-3 text-danger fw-bold">{{ $project->title }}</h1>
-        <h5 class="text-secondary text-center">Author: {{ $project->user ? $project->user->name : 'Unknown' }}</h5>
-        <div class="d-flex justify-content-between mt-3 text-white">
+             <h1 class="text-center mt-3 text-danger fw-bold">{{ $project->title }}</h1>
+             <h5 class="text-secondary text-center">Author: {{ $project->user ? $project->user->name : 'Unknown' }}</h5>
+             <p class="text-center text-white mt-3">
+                 {{ $project->type ? $project->type->name : 'No Type' }}
+                 {{-- {{ $project->type?->name }} --}}
+             </p>
+             <div class="d-flex justify-content-between mt-3 text-white">
             <h5 class="">{{ $project->created_at }}</h5>
             <p>{{ $project->slug }}</p>
         </div>
