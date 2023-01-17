@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@100;200;300;400;500;600;700&display=swap");
+
+html {
+    position: relative;
+    height: 100%;
+}
+body {
+    height: 100%;
+    min-height: 100%;
+    font-size: 100%;
+    font-family: "Encode Sans Condensed", sans-serif !important;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+}
+
+//welcome-JUMBOTRON
+.myjumbotron {
+    position: relative;
+    width: 100%;
+    margin-bottom: 2em;
+    height: 400px;
+}
+
+.myjumbotron > .waves {
+    width: 100% !important;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    object-fit: cover;
+    // aspect-ratio: 1 /5;
+}
+
+.myjumbotron > #morty {
+    position: absolute;
+    right: 85px;
+    bottom: 50px;
+    z-index: 0;
+}
+
+#left-eye {
+    position: absolute;
+    top: 190px;
+    right: 225px;
+    border-radius: 5px;
+}
+
+#right-eye {
+    position: absolute;
+    top: 193px;
+    right: 165px;
+    border-radius: 5px;
+}
+
+.myjumbotron > .container,
+h1,
+p {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    z-index: 5 !important;
+}
+
+//DASHBOARD
+.dashboard-icons {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1em;
+}
+
+.dashboard-icons > .feature {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: center;
+}
+
+.feature > i {
+    font-size: 5rem;
+}
+
+//MODAL
+
+.mymod {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #212528;
+    color: white;
+    width: 35%;
+    border: 2px solid rgb(177, 17, 17);
+    border-radius: 20px;
+    padding: 1.5em;
+    display: none;
+    z-index: 9;
+}
+
+.layer {
+    background-color: rgba(0, 0, 0, 0.465);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 100%;
+
+    display: none;
+    z-index: 8;
+}
+
+// PROJECT INDEX
+
+#img-index-td {
+    width: 40% !important;
+
+    img {
+        max-width: 80% !important;
+    }
+}
