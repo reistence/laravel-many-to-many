@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container mt-4">
-    <div class="container text-white">
+    <div class="container text-white mb-4">
          <div class="text-start mb-4">
                 <a href="{{ route('admin.projects.index') }}" class="btn btn-danger"><i class="fa-solid fa-angles-left"></i></a>
             </div>
