@@ -10,7 +10,9 @@
                         <form method="GET" class="input-group w-50" action="{{route("admin.projects.index")}}">
                             @csrf
                             <input type="text" class="form-control bg-dark text-white rounded-start" name="project_search_title" placeholder="Search for a project"  aria-label="projects_title_filter" aria-describedby="button-addon2">
-                            <button type="submit" class="btn btn-outline-secondary " id="button-addon2">Search</button>
+                            <button type="submit" class="btn btn-outline-secondary " id="button-addon2">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
                         </form> 
                     </div>
                 
