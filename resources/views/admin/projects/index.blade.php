@@ -5,9 +5,23 @@
         <h3 class="text-center text-danger fw-bold">Projects List</h3>
         <div class="row justify-content-center">
             <div class="col-11">
-                 <div class="text-end mb-4">
-                <a href="{{ route('admin.projects.create') }}" class="btn btn-danger">Add a new Project</a>
-            </div>
+                <div class="mb-4">
+                    <div class="input-group mt-3" >
+                        <form method="GET" class="input-group w-50" action="{{route("admin.projects.index")}}">
+                            @csrf
+                            <input type="text" class="form-control bg-dark text-white rounded-start" name="project_search_title" placeholder="Search for a project"  aria-label="projects_title_filter" aria-describedby="button-addon2">
+                            <button type="submit" class="btn btn-outline-secondary " id="button-addon2">Search</button>
+                        </form> 
+                    </div>
+                
+                    <div class="text-end mb-3 inline-block">
+    
+                        <a  href="{{ route('admin.projects.create') }}" class="text-end btn btn-danger">New Project</a>
+                    </div>
+    
+                    
+                </div>
+                
             @if (session('message'))
                     <div class="alert alert-success">
                         {{ session('message') }}

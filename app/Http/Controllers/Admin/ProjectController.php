@@ -10,6 +10,7 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Contracts\Cache\Store;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,11 +21,16 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::all();
+        if (count($request->all()) === 0) {
+            $projects = Project::all();
+        } elseif ($request->has("project_search_title")) {
+            // dd($request->all());
+            $projects = Project::where("title", "like", "%$request->project_search_title%")->get();
+        }
+        
         $types = Type::all();
-
         return view("admin.projects.index", compact("projects", "types"));
     }
 
